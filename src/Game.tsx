@@ -1,10 +1,10 @@
-import { Card, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from '@mui/material';
+import { Card, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { useQuestionsStore } from "./store/questions";
 import SyntaxHighLighter from "react-syntax-highlighter";
 import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { type Question as QuestionType } from "./types";
 
-
+// We create this function outside to not create it every time we render the Question component:
 const getBackgroundColor = (info: QuestionType, index: number) => {
     const { userSelectedAnswer, correctAnswer } = info;
     if (userSelectedAnswer == null) return 'transparent';
