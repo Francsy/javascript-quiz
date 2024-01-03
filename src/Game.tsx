@@ -4,6 +4,7 @@ import SyntaxHighLighter from "react-syntax-highlighter";
 import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { type Question as QuestionType } from "./types";
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { Footer } from './Footer';
 
 // We create this function outside to not create it every time we render the Question component:
 const getBackgroundColor = (info: QuestionType, index: number) => {
@@ -80,6 +81,7 @@ export const Game = () => {
 
             </Stack>
             <Question info={questionInfo} />
+            <Footer />
         </>
     );
 
