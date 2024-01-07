@@ -27,8 +27,6 @@ const Question = ({ info }: { info: QuestionType }) => {
         selectAnswer(info.id, answerIndex);
     };
 
-
-
     return (
         <Card variant='outlined' sx={{ bgcolor: "#222", p: 2, textAlign: "left", marginTop: 4 }}>
             <Typography variant='h5'>

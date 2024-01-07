@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { type Question } from '../types';
 import confetti from 'canvas-confetti';
-import { persist } from 'zustand/middleware';
+import { getRandomQuestions } from '../services/questions';
 
 interface State {
     questions: Question[],
@@ -10,6 +11,7 @@ interface State {
     selectAnswer: (questionId: number, answerIndex: number) => void
     goNextQuestion: () => void
     goPreviousQuestion: () => void
+    reset: () => void
 }
 
 // persist is used to save the state in localstorage to not lose it when reload
@@ -17,13 +19,14 @@ interface State {
 export const useQuestionsStore = create<State>()(persist((set, get) => {
     return {
         questions: [],
+
         currentQuestion: 0,
+
         fetchQuestions: async (limit: number) => {
-            const res = await fetch('http://localhost:5173/data.json');
-            const json = await res.json();
-            const questions = json.sort(() => Math.random() - 0.5).slice(0, limit);
+            const questions = await getRandomQuestions(limit);
             set({ questions });
         },
+
         selectAnswer: (questionId: number, answerIndex: number) => {
             const { questions } = get();
             // We use structuredClone to clone the object:
@@ -55,8 +58,9 @@ export const useQuestionsStore = create<State>()(persist((set, get) => {
             const { currentQuestion } = get();
             const previousQuestion = currentQuestion - 1;
             if (previousQuestion >= 0) set({ currentQuestion: previousQuestion });
-        }
+        },
 
+        reset: () => set({ questions: [], currentQuestion: 0 })
     };
 }, {
     name: 'questions'
