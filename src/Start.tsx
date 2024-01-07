@@ -9,8 +9,11 @@ export const Start = () => {
     const handleClick = () => {
         fetchQuestions(LIMIT_QUESTIONS);
     };
-    return (<Button onClick={handleClick} variant='contained'>
-        ¡Empezar!
-    </Button>
+    return (
+        <div style={{ marginTop: '25px' }}>
+            <Button onClick={handleClick} variant='contained'>
+                ¡Empezar!
+            </Button>
+        </div>
     );
 };
