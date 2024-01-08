@@ -1,7 +1,7 @@
 import { Card, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from '@mui/material';
 import { useQuestionsStore } from "./store/questions";
 import SyntaxHighLighter from "react-syntax-highlighter";
-import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { /* gradientDark */ xt256 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { type Question as QuestionType } from "./types";
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
 import { Footer } from './Footer';
@@ -32,7 +32,7 @@ const Question = ({ info }: { info: QuestionType }) => {
             <Typography variant='h5'>
                 {info.question}
             </Typography>
-            <SyntaxHighLighter language='javascript' style={gradientDark} >
+            <SyntaxHighLighter language='javascript' style={xt256} >
                 {info.code}
             </SyntaxHighLighter>
             <List sx={{ bgcolor: '#333' }} disablePadding>
@@ -58,10 +58,18 @@ const Question = ({ info }: { info: QuestionType }) => {
 };
 
 export const Game = () => {
-    const questions = useQuestionsStore(state => state.questions);
-    const currentQuestion = useQuestionsStore(state => state.currentQuestion);
-    const goNextQuestion = useQuestionsStore(state => state.goNextQuestion);
-    const goPreviousQuestion = useQuestionsStore(state => state.goPreviousQuestion);
+
+    const [
+        questions,
+        currentQuestion,
+        goNextQuestion,
+        goPreviousQuestion
+    ] = useQuestionsStore(state => [
+        state.questions,
+        state.currentQuestion,
+        state.goNextQuestion,
+        state.goPreviousQuestion
+    ]);
 
     const questionInfo = questions[currentQuestion];
 
