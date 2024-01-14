@@ -9,7 +9,7 @@ Welcome to the JavaScript Quiz Challenge! Test your JavaScript knowledge and imp
 3. Open the terminal and run `npm install` to set up the necessary dependencies.
 4. Launch the quiz application with `npm run dev`.
 
-**:link: Or visit [JavaScript Quizz](https://www.example.com) and start the quiz now!** 
+**:link: Or visit [JavaScript Quizz](https://www.javascriptquiz.francsy.dev) and start the quiz now!** 
 
 Share your results and challenge your friends to beat your score! :trophy:
 
