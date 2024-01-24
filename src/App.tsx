@@ -8,7 +8,6 @@ import { Game } from './Game';
 function App() {
   const isMobile = useMediaQuery('(max-width:600px)');
   const questions = useQuestionsStore(state => state.questions);
-  console.log(questions);
   return (
     <>
       <main>
